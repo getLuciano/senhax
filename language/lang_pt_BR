@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# ---------------------------------
+# Mensagens para Portugês do Brasil
+# ---------------------------------
+# 
+# Tela de Criar a Conta do Usuário e Instalação do Banco de Dados sqlite3
+create_name="Nome:"
+create_password="1- Escreva sua Senha:"
+create_password_confirm="2- Confirme sua Senha:"
+create_screen_text_title="Você precisa iniciar a sua conta no"
+create_screen_text_subtitle="Registre detalhes do seu Login"
+create_different_password="Senhas divergentes. Tente novamente!"
+create_accept_acceptance_policy="Você aceita os Termos de Uso e a Política de Privacidade? (S/n)"
+create_not_accept_acceptance_policy="Cadastro Cancelado pelo usuário."
+create_accept_acceptance_policy_others="As Opções aceitas são (S ou s) ou (N ou n)."
+create_database="banco de dados instalado corretamente"
+#
+# Mensagens para a tela de login
+login_title="Login"
+login_user="Usuário: "
+login_password="Senha: "
+login_button="Entrar"

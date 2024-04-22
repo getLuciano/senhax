@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# ---------------------------------
+# Messages for American English
+# ---------------------------------
+# 
+# Create user account and SQLite3 database installation screen
+create_name="Name:"
+create_password="1- Type your password:"
+create_password_confirm="2- Confirm your password:"
+create_screen_text_title="You need to start your account on"
+create_screen_text_subtitle="Register login details"
+create_different_password="Divergent passwords. Try again!"
+create_accept_acceptance_policy="Do you accept the Terms of Use and Privacy Policy? (Y/n)"
+create_not_accept_acceptance_policy="Registration canceled by the user."
+create_accept_acceptance_policy_others="The accepted options are (Y or s) or (N or n)."
+create_database="database installed correctly"
+#
+# Login screen
+login_title="Login"
+login_user="User:"
+login_password="Password:"
+login_button="To enter"
