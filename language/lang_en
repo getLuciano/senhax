@@ -8,7 +8,7 @@ home_add="Register New User"
 home_go_into="Go into"
 home_terms="Terms of use"
 home_back_off="Back Off"
-home_pause="Press the options key to continue..."
+home_pause="Press to access the Password options."
 # 
 # Create user account and SQLite3 database installation screen
 create_name="User Name:"
@@ -17,6 +17,7 @@ create_password_confirm="2- Confirm your password:"
 create_screen_text_title="Register New User"
 create_screen_text_subtitle="Register your Login details:
   [User Name] [E-mail] [Password]"
+create_username_exist="Usuário [%s] já existe. Tente outro nome."
 create_different_password="Divergent passwords. Try again!"
 create_accept_acceptance_policy="Do you accept the Terms of Use and Privacy Policy? (Y/n)"
 create_not_accept_acceptance_policy="Registration canceled by the user."

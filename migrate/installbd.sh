@@ -3,7 +3,7 @@
 if [[ $resposta == "S" ]] || [[ $resposta == "s" ]]
 then
 
-    DATABASE_FILE=$(pwd)"/migrate/data.db"
+    DATABASE_FILE="$USER_PATH$name/data.db"
     # Pega a chave de desenvolvimento do arquivo config
     # o nome do banco será o nome
     # DEV_KEY="sua_chave_de_desenvolvimento"

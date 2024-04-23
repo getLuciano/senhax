@@ -9,7 +9,7 @@ home_add="Cadastrar Novo Usuário"
 home_go_into="Entrar"
 home_terms="Termos de Uso"
 home_back_off="Desistir"
-home_pause="Pressione a tecla das opções para continuar..."
+home_pause="Pressione para acessar as opções Senhax."
 #
 # Tela de Criar a Conta do Usuário e Instalação do Banco de Dados sqlite3
 # Create User Account and SQLite3 Database Installation Screen
@@ -20,6 +20,7 @@ create_password_confirm="2- Confirme sua Senha:"
 create_screen_text_title="Cadastrar Novo Usuário"
 create_screen_text_subtitle="Registre detalhes do seu Login:
  [Nome de Usuário] [E-mail] [Senha]"
+create_username_exist="Usuário [%s] já existe. Tente outro nome."
 create_different_password="Senhas divergentes. Tente novamente!"
 create_accept_acceptance_policy="Você aceita os Termos de Uso e a Política de Privacidade? (S/n)"
 create_not_accept_acceptance_policy="Cadastro Cancelado pelo usuário."
