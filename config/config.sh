@@ -8,29 +8,62 @@ export pkgext='tpkg' #extensão do pacote #package extension
 #disabling unicode support, for better performance
 export LC_ALL=C
 export LANG=C
+
+#========================================| VARIABLES CREATE
+CREATE_PATH_USER= 1
 #========================================| FUNÇÕES
+
+# Define a chave de desenvolvimento
+# Sets the development key
+create_key_user() {
+    
+    name="$1"
+    USER_PATH="$2"
+
+    #ARQUIVO_KEY=$(pwd)"/usuarios/$name/.dev_key"
+
+    if [ ! -d $USER_PATH ]; then
+        
+        mkdir $USER_PATH
+
+        if [ ! -e "$ARQUIVO_KEY" ]
+        then
+            textdevkey=$(uuidgen)
+            echo $textdevkey > "$USER_PATH/.dev_key"
+            chmod 400 $USER_PATH/.dev_key
+            CREATE_PATH_USER= "0"
+        fi
+
+        DEV_KEY=$(cat "$USER_PATH/.dev_key")
+    else
+        printf " Usuário [%s] já existe. Tente outro nome.\n\n" "$name"
+        sleep 2
+        return 1
+    fi
+
+}
+
+
+# Função para converter texto de maiúsculas para minúsculas
+converter_para_minusculas() {
+    local texto="$1"
+    local minusculas=$(echo "$texto" | tr '[:upper:]' '[:lower:]')
+    echo "$minusculas"
+}
+
 
 
 #========================================| 
 # Define o caractere a ser repetido e o número de vezes para separar texto
 # Defines the character to be repeated and the number of times to separate text
-caractere_row="_"
-quantidade_row=60
+caractere_row="="
+quantidade_row=32
 row_sep=""
 for ((i = 0; i < quantidade_row; i++)); do
     row_sep+="$caractere_row"
 done
 
-# Define a chave de desenvolvimento
-# Sets the development key
-ARQUIVO_KEY=$(pwd)"/config/devkey"
-if [ ! -e $ARQUIVO_KEY ]
-then
-    textdevkey=$(uuidgen)
-    echo $textdevkey > $ARQUIVO_KEY
-    chmod 400 $ARQUIVO_KEY
-fi
-DEV_KEY=$(cat $ARQUIVO_KEY)
+
 # Define a user.nome, user.email, user.password, user.termos
 # Sets the user.name ....   
 # se não existir o arquivo config/user, é o primeiro acesso. Iremos Criar um Arquivo de configuração do usuário, 
@@ -40,16 +73,52 @@ DEV_KEY=$(cat $ARQUIVO_KEY)
 #
 
 ARQUIVO_USUARIO=$(pwd)"/config/user"
+ARQUIVO_SENHA_USUARIO=$(pwd)"/config/.puser"
 if [ ! -e $ARQUIVO_USUARIO ]
 then
     clear
 
-    printf "\n\n\n %s SenhaX" "$create_screen_text_title"
-    printf "\n\n %s \n" "$create_screen_text_subtitle"
+    printf "=========== SenhaX =============\n\n %s" "$create_screen_text_title"
+    printf "\n\n %s \n\n" "$create_screen_text_subtitle"
     printf "%s\n\n" $row_sep
-    read -p " $create_name " name
+
+    # Validação da entrada dos dados
+    source "controller/validate_add.sh"
+
+    while true
+    do    
+        read -p " $create_name " name
+        #chama validar nome de usuário, e verifica se o retorno é true, se não retornapara nova tentativa
+        name=$(converter_para_minusculas "$name")
+        validar_nome_usuario "$name"
+        if [[ $? -eq "0" ]]; then
+
+            USER_PATH=$(pwd)"/usuarios/$name"
+            
+            create_key_user "$name" "$USER_PATH"
+            if [[ $? -eq "0" ]]; then
+                break
+            fi        
+
+        fi
+
+    done
+
     printf "%s\n\n" $row_sep
-    read -p " E-mail: " email
+
+    while true
+    do
+        #fazer a verificação do email
+        read -p " E-mail: " email    
+        email=$(converter_para_minusculas "$email")
+        validar_email "$email"
+        if [[ $? -eq "0" ]]; then
+            if [[ $? -eq "0" ]]; then
+                break
+            fi        
+        fi    
+    done
+    
     printf "%s\n\n" $row_sep
 
     while true
@@ -62,6 +131,24 @@ then
 
         if [[ "$password" == "$passwordconfirm" ]]
         then
+            # Inicia o gpg-agent
+            eval $(gpg-agent --daemon)
+            clear
+            #este clear nao mostra a execução do gpg-agent
+            printf
+            # Configura o gpg-agent para armazenar a senha em cache por 18 segundos
+            echo "default-cache-ttl 18" >> ~/.gnupg/gpg-agent.conf
+
+            echo $password > $ARQUIVO_SENHA_USUARIO
+            
+            # Criptografa um arquivo usando a chave privada protegida por senha
+            echo $password | gpg --batch --passphrase-fd 0 -c $ARQUIVO_SENHA_USUARIO 2> /dev/null
+            sleep 2
+            rm $ARQUIVO_SENHA_USUARIO
+
+            # Encerra o gpg-agent
+            killall gpg-agent
+
             #clear
             break
         fi

@@ -2,18 +2,37 @@
 # ---------------------------------
 # Messages for American English
 # ---------------------------------
+# Tela Inicial. Home screen
+#
+home_add="Register New User"
+home_go_into="Go into"
+home_terms="Terms of use"
+home_back_off="Back Off"
+home_pause="Press the options key to continue..."
 # 
 # Create user account and SQLite3 database installation screen
-create_name="Name:"
+create_name="User Name:"
 create_password="1- Type your password:"
 create_password_confirm="2- Confirm your password:"
-create_screen_text_title="You need to start your account on"
-create_screen_text_subtitle="Register login details"
+create_screen_text_title="Register New User"
+create_screen_text_subtitle="Register your Login details:
+  [User Name] [E-mail] [Password]"
 create_different_password="Divergent passwords. Try again!"
 create_accept_acceptance_policy="Do you accept the Terms of Use and Privacy Policy? (Y/n)"
 create_not_accept_acceptance_policy="Registration canceled by the user."
-create_accept_acceptance_policy_others="The accepted options are (Y or s) or (N or n)."
+create_accept_acceptance_policy_others="The accepted options are (S or s) or (N or n)."
 create_database="database installed correctly"
+#
+# Validation of create messages
+# 
+validate_user_name_="Username [%s] cannot contain blanks.
+ Use '_' in empty spaces."
+validate_user_name_number="Username [%s] cannot start with a number."
+validate_user_name_six="Username [%s] cannot be less than 6 letters long."
+validate_user_name_special="The username [%s] cannot contain special characters except the underscore (_)."
+validate_email_0="The email address '%s' is valid."
+validate_email_1="The email address '%s' is not valid.
+ Check the email you entered."
 #
 # Login screen
 login_title="Login"

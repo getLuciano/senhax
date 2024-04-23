@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #clear
-if [ $resposta == "S" ] || [ $resposta == "s" ]
+if [[ $resposta == "S" ]] || [[ $resposta == "s" ]]
 then
 
     DATABASE_FILE=$(pwd)"/migrate/data.db"

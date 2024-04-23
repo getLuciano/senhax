@@ -3,19 +3,43 @@
 # Mensagens para Portugês do Brasil
 # ---------------------------------
 # 
+# Tela Inicial. Home screen
+#
+home_add="Cadastrar Novo Usuário"
+home_go_into="Entrar"
+home_terms="Termos de Uso"
+home_back_off="Desistir"
+home_pause="Pressione a tecla das opções para continuar..."
+#
 # Tela de Criar a Conta do Usuário e Instalação do Banco de Dados sqlite3
-create_name="Nome:"
+# Create User Account and SQLite3 Database Installation Screen
+#
+create_name="Nome de Usuário:"
 create_password="1- Escreva sua Senha:"
 create_password_confirm="2- Confirme sua Senha:"
-create_screen_text_title="Você precisa iniciar a sua conta no"
-create_screen_text_subtitle="Registre detalhes do seu Login"
+create_screen_text_title="Cadastrar Novo Usuário"
+create_screen_text_subtitle="Registre detalhes do seu Login:
+ [Nome de Usuário] [E-mail] [Senha]"
 create_different_password="Senhas divergentes. Tente novamente!"
 create_accept_acceptance_policy="Você aceita os Termos de Uso e a Política de Privacidade? (S/n)"
 create_not_accept_acceptance_policy="Cadastro Cancelado pelo usuário."
 create_accept_acceptance_policy_others="As Opções aceitas são (S ou s) ou (N ou n)."
 create_database="banco de dados instalado corretamente"
 #
-# Mensagens para a tela de login
+# Validação das mensagens do create
+# 
+validate_user_name_="O nome de usuário [%s] não pode conter espaços em branco.
+ Use '_' no lugar de espaços."
+validate_user_name_number="O nome de usuário [%s] não pode começar com um número."
+validate_user_name_six="O nome de usuário [%s] não pode ser menor que 6 letras."
+validate_user_name_special="O nome de usuário [%s] não pode conter caracteres especiais, exceto o sublinhado (_)."
+validate_email_0="O endereço de e-mail '%s' é válido."
+validate_email_1="O endereço de e-mail '%s' não é válido.
+ Verifique o e-mail digitado."
+
+#
+# Mensagens para a tela de login. Messages for the login screen
+# 
 login_title="Login"
 login_user="Usuário: "
 login_password="Senha: "
