@@ -54,7 +54,7 @@ while true; do
             add_new_user
             ;;
         E|e)
-            echo " Opção E selecionada: Entrar"
+            printf ") Entrar.\n\n Digite seu Usuário e sua Senha. "
             login_user
             ;;
         T|t)
