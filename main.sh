@@ -7,9 +7,22 @@ else
 fi
 source "$LANG_SENHAX"
 
+
+USER_PATH=$(pwd)"/usuarios/"
+
+
 add_new_user(){
+    # Salvar as variáveis de ambiente antes de entrar no modo ADD NEW USER
+    # Save environment variables before entering ADD NEW USER mode
+    before_add_new_user=$(set -o)
     source config/config.sh
     source migrate/installbd.sh
+}
+login_user(){
+
+    before_login_user=$(set -o)
+    source controller/login.sh
+
 }
 
 
@@ -37,17 +50,18 @@ while true; do
     case $opcao in
         C|c)
             clear
-            printf "Opção C selecionada: Cadastrar Novo Usuário\n"
+            printf " Opção C selecionada: Cadastrar Novo Usuário\n"
             add_new_user
             ;;
         E|e)
-            echo "Opção E selecionada: Entrar"
+            echo " Opção E selecionada: Entrar"
+            login_user
             ;;
         T|t)
-            echo "Opção T selecionada: Termos de Uso"
+            echo " Opção T selecionada: Termos de Uso"
             ;;
         X|x)
-            echo "Opção X selecionada: Sair"
+            echo " Opção X selecionada: Sair"
             break
             ;;
         *)

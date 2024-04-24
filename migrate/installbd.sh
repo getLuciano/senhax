@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#clear
+
 if [[ $resposta == "S" ]] || [[ $resposta == "s" ]]
 then
 
@@ -72,3 +72,7 @@ EOF
     fi
 
 fi
+
+# Restaura o ambiente anterior
+# Restore the previous environment
+eval "$before_add_new_user"

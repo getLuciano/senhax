@@ -13,6 +13,8 @@ export LANG=C
 CREATE_PATH_USER_=1
 CREATE_FILE_USER_=1
 USER_PATH=$(pwd)"/usuarios/"
+#=========================================| COMPONENTS
+source controller/component.sh
 
 #========================================| FUNÇÕES
 
@@ -51,12 +53,6 @@ create_file_dev_key(){
     DEV_KEY=$(cat "$ARQUIVO_KEY") 
 }
 
-# Função para converter texto de maiúsculas para minúsculas
-converter_para_minusculas() {
-    local texto="$1"
-    local minusculas=$(echo "$texto" | tr '[:upper:]' '[:lower:]')
-    echo "$minusculas"
-}
 
 
 #========================================| 
