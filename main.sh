@@ -50,7 +50,6 @@ while true; do
     case $opcao in
         C|c)
             clear
-            printf " Opção C selecionada: Cadastrar Novo Usuário\n"
             add_new_user
             ;;
         E|e)
@@ -58,14 +57,15 @@ while true; do
             login_user
             ;;
         T|t)
-            echo " Opção T selecionada: Termos de Uso"
+            printf ") Termos de Uso. \n\n"
             ;;
         X|x)
-            echo " Opção X selecionada: Sair"
+            clear
+            printf "\nSenhaX encerrado com sucesso! \n"
             break
             ;;
         *)
-            echo " Opção inválida"
+            printf ")\n\n Opção inválida. \n\n Digite: [C],[E],[T],ou[X]\n\n "
             ;;
     esac
 

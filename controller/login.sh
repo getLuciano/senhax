@@ -85,5 +85,3 @@ if [[ $? -eq "0" ]]; then
     clear
     source controller/controller_senhax.sh
 fi   
-# 
-# echo "Aqui está o seu script após o login."   

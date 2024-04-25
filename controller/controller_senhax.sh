@@ -1,14 +1,37 @@
 #!/usr/bin/env bash
 
+senhas_registro(){
+    # Solicita ao usuário as informações
+    read -p "Qual empresa / Site da empresa: " link_login
+    read -p "Qual o seu usuário: " nome_usuario
+    read -p "Digite a senha que deseja guardar: " senha
+    read -p "Algum comentário importante?: " comentario
+
+    # Monta o JSON com as informações fornecidas
+    json="{"
+    json+="\"link_login\": \"$link_login\", "
+    json+="\"nome_usuario\": \"$nome_usuario\", "
+    json+="\"senha\": \"$senha\", "
+    json+="\"comentario\": \"$comentario\""
+    json+="}"
+
+    # Retorna o JSON gerado
+    echo "$json"
+}
+
+
+
+
 # Função para exibir o menu. Function to display the menu
 menu_senhax() {
     clear
-    printf "========================== SENHAX \n\n\n"
-    printf "  [C] %s\n" "Adicionar Nova Senha"
-    printf "  [E] %s\n" "Editar Senha"
-    printf "  [T] %s\n" "Listar Senha"
-    printf "  [B] %s\n" "Gerenciar Backup"
-    printf "  [R] %s\n" "Agendar Backup"
+    capitalizada=$(capitalizar_primeiro "$USUARIO_LOGADO")
+    printf "\n %s, você está no SenhaX 🔑 \n\n" "$capitalizada"
+    printf "  [C] %s\n" "Senhas"
+    printf "  [E] %s\n" "Conta"
+    printf "  [T] %s\n" ""
+    printf "  [B] %s\n" "Backup"
+    printf "  [R] %s\n" ""
     printf "  [X] %s\n" "Sair"
 
     printf "================================\n\n"
@@ -27,7 +50,17 @@ while true; do
     # Processa a entrada do usuário. Processes user input
     case $opcao in
         C|c)
-            printf " Opção C selecionada: Cadastrar Novo Usuário\n"
+            printf ") Senhas.\n\n
+ Salve senhas de acessos em sites, apps. \n\n"
+             registro_json=$(senhas_registro)
+
+             # Exibir o JSON gerado
+                echo "JSON gerado:"
+                printf "%s \n" "$registro_json"
+
+                # Salvar 
+                #echo "Salvando dados no banco de dados (simulado):"
+                #echo "$dados_json" >> banco_de_dados.json
             ;;
         E|e)
             echo " Opção E selecionada: Entrar"
@@ -47,3 +80,9 @@ while true; do
     # Pausa para o usuário ler a mensagem antes de exibir o menu novamente
     read -n1 -s -r -p "Digite algumas das opções de comando"
 done
+# Exemplo de uso: solicitar informações e gerar um JSON
+echo "Por favor, forneça as seguintes informações:"
+
+
+
+
