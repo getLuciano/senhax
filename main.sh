@@ -53,7 +53,7 @@ while true; do
             add_new_user
             ;;
         E|e)
-            printf ") Entrar.\n\n Digite seu Usuário e sua Senha. "
+            printf ") Entrar.\n\n  Digite seu Usuário e sua Senha. "
             login_user
             ;;
         T|t)
@@ -61,7 +61,7 @@ while true; do
             ;;
         X|x)
             clear
-            printf "\nSenhaX encerrado com sucesso! \n"
+            printf "\nSenhaX encerrado com sucesso!\n"
             break
             ;;
         *)
